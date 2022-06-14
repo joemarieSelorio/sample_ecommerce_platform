@@ -1,11 +1,11 @@
 const HttpSuccess = require('../../responses/HttpSuccess');
 const log = require('../../utilities/LoggerUtil');
 
-const TAG = '[usersController]';
+const TAG = '[ProductsController]';
 
 const {
   getProducts,
-  getProductsByName,
+  getProductById,
 } = require('./ProductsManager');
 
 
@@ -43,17 +43,17 @@ const {
  * @param {object} res - The response object
  * @param {function} next - The next function to execute
  */
- async function getProductByNameController(req, res, next) {
+ async function getProductController(req, res, next) {
   const METHOD = '[getProductByNameController]';
   log.info(`${TAG} ${METHOD}`);
 
   /* get params */
-  const {name} = req.params;
+  const {id} = req.params;
 
-  let result;
+  let product;
 
   try {
-    product = await getProductsByName(name);
+    product = await getProductById(id);
   } catch (error) {
     log.error(`${TAG} ${METHOD} [getContents] ${error}`);
     return next(error);
@@ -66,9 +66,11 @@ const {
   return next();
 }
 
+
+
 module.exports = {
   getProducts: getProductsController,
-  getProduct: getProductByNameController,
+  getProduct: getProductController,
 };
 
 

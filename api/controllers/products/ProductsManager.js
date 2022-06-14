@@ -18,8 +18,7 @@ const log = require('../../utilities/LoggerUtil');
   const METHOD = '[getProducts]';
   log.info(`${TAG} ${METHOD}`);
 
-
-  const products = await productService.find({}, 'name image quantity');
+  const products = await productService.find({}, 'id name image quantity');
 
   log.info(`${TAG} ${METHOD} [getProducts] `);
 
@@ -29,23 +28,23 @@ const log = require('../../utilities/LoggerUtil');
 /**
  * add new user resource.
  *
- * @param {String} name - product name
+ * @param {String} id - product id
  * @return {Object} the product object resource.
  */
- async function getProductsByName(name) {
+ async function getProductById(id) {
   const METHOD = '[getProductsByName]';
   log.info(`${TAG} ${METHOD}`);
 
-  const product = await productService.findOne({name}, 'name image quantity');
+  const product = await productService.findOne({id}, 'id name image quantity price');
 
-  log.info(`${TAG} ${METHOD} [getProductsByName]`);
+  log.info(`${TAG} ${METHOD} [getProductById]`);
 
   return product;
 }
 
 module.exports = {
   getProducts,
-  getProductsByName,
+  getProductById,
 };
 
 

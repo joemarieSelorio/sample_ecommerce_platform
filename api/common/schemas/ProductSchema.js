@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
+  id: {
+    type: Number,
+    unique: true,
+    required: true,
+  },
   name: {
     type: String,
     unique: true,
@@ -14,6 +19,10 @@ const schema = new mongoose.Schema({
   quantity: {
     type: Number,
     default: 0,
+  },
+  price: {
+    type: Number,
+    required: true,
   },
 }, {
   timestamps: true,
