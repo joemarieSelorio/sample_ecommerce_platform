@@ -1,7 +1,7 @@
 const HttpSuccess = require('../../responses/HttpSuccess');
 const log = require('../../utilities/LoggerUtil');
 
-const TAG = '[usersController]';
+const TAG = '[UsersController]';
 
 const {
   addUser,
@@ -10,7 +10,7 @@ const {
 
 
 /**
- * Controller for adding new string resource
+ * Controller for adding new user
  * @param {object} req - The request object
  * @param {object} res - The response object
  * @param {function} next - The next function to execute
@@ -30,7 +30,7 @@ const {
     return next(error);
   }
 
-  res.locals.respObj = new HttpSuccess(201, 'Successfully register user', {
+  res.locals.respObj = new HttpSuccess(201, 'Successfully added new user', {
     user,
   });
 
@@ -38,7 +38,7 @@ const {
 }
 
 /**
- * Controller for retrieving string resources
+ * Controller for retrieving user details
  * @param {object} req - The request object
  * @param {object} res - The response object
  * @param {function} next - The next function to execute
@@ -48,19 +48,19 @@ const {
   log.info(`${TAG} ${METHOD}`);
 
   /* get params */
-  const {uuid} = req.params;
+  const {id} = req.params;
 
 
-  let result;
+  let user;
   try {
-    result = await getUser(uuid);
+    user = await getUserByUuid(id);
   } catch (error) {
     log.error(`${TAG} ${METHOD} [getContents] ${error}`);
     return next(error);
   }
 
   res.locals.respObj = new HttpSuccess(200, `Successfully retrieved user`, {
-    result,
+    user,
   });
 
   return next();

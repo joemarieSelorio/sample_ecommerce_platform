@@ -1,14 +1,9 @@
-const TAG = '[ContentsManager]';
-
-const assert = require('assert');
-const {v4: uuidv4} = require('uuid');
-const bcrypt = require('bcrypt');
-
 const CartSchema = require('../../common/schemas/CartSchema');
-const ProductSchema = require('../../common/schemas/ProductSchema');
 const MongoDBService = require('../../services/MongoDBService');
 const cartService = new MongoDBService(CartSchema);
 const log = require('../../utilities/LoggerUtil');
+
+const TAG = '[ContentsManager]';
 
 
 /**
@@ -42,7 +37,7 @@ const log = require('../../utilities/LoggerUtil');
 
   const cart = await cartService.findOne({id}, 'id products');
 
-  log.info(`${TAG} ${METHOD} [getProductsByName]`);
+  log.info(`${TAG} ${METHOD} [getCartDetails]`);
 
   return cart;
 }

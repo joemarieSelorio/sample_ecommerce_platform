@@ -10,7 +10,7 @@ const {
 
 
 /**
- * Controller for adding new string resource
+ * Controller for adding cart to cart
  * @param {object} req - The request object
  * @param {object} res - The response object
  * @param {function} next - The next function to execute
@@ -29,6 +29,7 @@ const {
     id,
     name,
     image,
+    description,
   } = req.body;
 
   
@@ -41,6 +42,7 @@ const {
     name,
     image,
     quantity: 1,
+    description,
   }
 
   filteredProduct ? updates = {
@@ -71,7 +73,7 @@ const {
 
 
 /**
- * Controller for retrieving string resources
+ * Controller for retrieving cart details
  * @param {object} req - The request object
  * @param {object} res - The response object
  * @param {function} next - The next function to execute
@@ -90,7 +92,7 @@ const {
     return next(error);
   }
 
-  res.locals.respObj = new HttpSuccess(200, `Successfully retrieved user`, {
+  res.locals.respObj = new HttpSuccess(200, `Successfully retrieved cart details`, {
     result,
   });
 

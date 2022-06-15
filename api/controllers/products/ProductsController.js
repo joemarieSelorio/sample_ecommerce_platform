@@ -10,7 +10,7 @@ const {
 
 
 /**
- * Controller for retrieving string resources
+ * Controller for retrieving products
  * @param {object} req - The request object
  * @param {object} res - The response object
  * @param {function} next - The next function to execute
@@ -38,7 +38,7 @@ const {
 
 
 /**
- * Controller for retrieving string resources
+ * Controller for retrieving specific product
  * @param {object} req - The request object
  * @param {object} res - The response object
  * @param {function} next - The next function to execute

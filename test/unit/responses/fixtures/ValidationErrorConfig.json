@@ -1,0 +1,37 @@
+{
+    "defaultStatus": 400,
+    "defaultCode": 9997,
+    "defaultMessage": "Validation Error",
+    "errorArrBody": [
+      {
+        "code": "OBJECT_MISSING_REQUIRED_PROPERTY",
+        "message": "Missing required property: topics",
+        "path": []
+      }
+    ],
+    "validErrorBody": [
+      {
+        "code": "OBJECT_MISSING_REQUIRED_PROPERTY",
+        "message": "Missing required property: topics",
+        "path": []
+      }
+    ],
+    "errorArrPath": [
+      { 
+        "code": "MIN_LENGTH",
+        "message": "Error: Request validation failed: Parameter (chainAddress) is too short (40 chars), minimum 42",
+        "path": [ 
+          "chainAddress"
+        ] 
+      }
+    ],
+    "validErrorPath": [
+      {
+        "code": "MIN_LENGTH",
+        "message": "Error: Request validation failed: Parameter (chainAddress) is too short (40 chars), minimum 42",
+        "path": [
+            "chainAddress"
+        ]
+      }
+    ]
+  }

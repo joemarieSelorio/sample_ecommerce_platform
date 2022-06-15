@@ -1,13 +1,10 @@
-const TAG = '[ContentsManager]';
-
-const assert = require('assert');
-const {v4: uuidv4} = require('uuid');
-const bcrypt = require('bcrypt');
-
 const ProductSchema = require('../../common/schemas/ProductSchema');
 const MongoDBService = require('../../services/MongoDBService');
 const productService = new MongoDBService(ProductSchema);
+
 const log = require('../../utilities/LoggerUtil');
+
+const TAG = '[ContentsManager]';
 
 
 /**
@@ -18,7 +15,7 @@ const log = require('../../utilities/LoggerUtil');
   const METHOD = '[getProducts]';
   log.info(`${TAG} ${METHOD}`);
 
-  const products = await productService.find({}, 'id name image quantity');
+  const products = await productService.find({}, 'id name image quantity description');
 
   log.info(`${TAG} ${METHOD} [getProducts] `);
 
@@ -35,7 +32,7 @@ const log = require('../../utilities/LoggerUtil');
   const METHOD = '[getProductsByName]';
   log.info(`${TAG} ${METHOD}`);
 
-  const product = await productService.findOne({id}, 'id name image quantity price');
+  const product = await productService.findOne({id}, 'id name image quantity price description');
 
   log.info(`${TAG} ${METHOD} [getProductById]`);
 

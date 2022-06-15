@@ -1,4 +1,4 @@
-const TAG = '[ContentsManager]';
+
 
 const assert = require('assert');
 const {v4: uuidv4} = require('uuid');
@@ -8,6 +8,8 @@ const UsersSchema = require('../../common/schemas/UserSchema');
 const MongoDBService = require('../../services/MongoDBService');
 const userService = new MongoDBService(UsersSchema);
 const log = require('../../utilities/LoggerUtil');
+
+const TAG = '[UsersManager]';
 
 
 /**
@@ -45,15 +47,12 @@ const log = require('../../utilities/LoggerUtil');
   const METHOD = '[getUserByUuid]';
   log.info(`${TAG} ${METHOD}`);
 
-  const id = uuidv4();
-  const hashedPassword= await bcrypt.hash(password, 10);
 
+  const user = await userService.findOne({uuid}, 'uuid email');
 
-  const addedUser = await userService.findOne({uuid: id}, 'uuid email');
+  log.info(`${TAG} ${METHOD} [addedContent] ${JSON.stringify(user)}`);
 
-  log.info(`${TAG} ${METHOD} [addedContent] ${JSON.stringify(addedUser)}`);
-
-  return addedUser;
+  return user;
 }
 
 module.exports = {

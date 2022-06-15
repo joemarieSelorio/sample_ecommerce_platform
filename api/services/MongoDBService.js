@@ -25,32 +25,6 @@ class MongoDBService {
       this.model = mongoose.model(schema.name, schema.schema);
     }
 
-  /**
-   * Retrieve list of documents
-   * @param {Object} filter - query filter.
-   * Example: {key: 'value to filter'}
-   * SQL equivalent: SELECT * FROM collection WHERE key='value to filter'
-   * @param {String} fields - fields to return.
-   * Example: 'a b c d'
-   * Example: {page: 1, count: 1}
-   * @return {Array} array of objects from collection.
-   */
-   async find(filter, fields) {
-    const METHOD = '[find]';
-    log.info(`${TAG} ${METHOD} [${this.schema.name}]`);
-
-    try {
-      return this.model
-          .find(filter)
-          .select(fields)
-          .lean();
-    } catch (DbError) {
-      log.error(`${TAG} ${METHOD} ${DbError}`);
-      throw new DatabaseError();
-    }
-  }
-
-
     /**
    * Get a document
    * @param {Object} filter - query filter.
@@ -144,8 +118,8 @@ class MongoDBService {
     }
   }
 
-    /**
-   * Delete a document
+  /**
+   * delete multiple documents 
    * @param {Object} filter - query filter.
    */
      async deleteMany(filter) {
@@ -159,8 +133,6 @@ class MongoDBService {
         throw new DatabaseError();
       }
     }
-  
-
 }
 
 module.exports = MongoDBService;
