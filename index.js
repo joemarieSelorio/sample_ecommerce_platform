@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 
 const seedDB = require("./seed");
 const log = require('./api/utilities/LoggerUtil');
-const userRouter = require('./api/routers/UserRouter');
 const productRouter = require('./api/routers/ProductRouter');
 const cartRouter = require('./api/routers/CartRouter');
 const mongoDBUtil = require('./api/utilities/MongoDBUtil');
@@ -30,7 +29,6 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Routers
-app.use('/users', userRouter);
 app.use('/products', productRouter);
 app.use('/carts', cartRouter);
 

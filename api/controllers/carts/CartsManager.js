@@ -3,7 +3,7 @@ const MongoDBService = require('../../services/MongoDBService');
 const cartService = new MongoDBService(CartSchema);
 const log = require('../../utilities/LoggerUtil');
 
-const TAG = '[ContentsManager]';
+const TAG = '[CartsManager]';
 
 
 /**
